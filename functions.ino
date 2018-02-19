@@ -102,7 +102,7 @@ void vButtonClick()
 					break;
 			
 			}
-			prevAction = PAUSE;
+			//prevAction = PAUSE;
 			break;
 	}
 }
@@ -137,7 +137,10 @@ void vGetNextState()
 					break;
 
 				case RAMP_OPEN:
-					action = PAUSE;
+					if(actualState == nextState)
+						action = PAUSE;
+					else
+						nextState = RAMP_OPEN;
 					break;
 			}
 			break;
@@ -155,7 +158,7 @@ void vGetNextState()
 					if(actualState == nextState)
 						action = PAUSE;
 					else
-						nextState = DOOR_OPEN;
+						nextState = DOOR_CLOSED;
 					break;
 
 				case DOOR_OPEN:
