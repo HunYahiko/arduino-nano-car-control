@@ -201,3 +201,6 @@ u32 getDistance()
 
 	return (duration * 0.034) / 2;
 }
+
+bool debounce(int pin, int debounceLimit) {
+}
