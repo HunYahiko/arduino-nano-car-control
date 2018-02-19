@@ -17,15 +17,16 @@ typedef enum element
 
 typedef enum state
 {
-	DOOR_OPEN,
-
 	DOOR_CLOSED,
-	PLATFORM_OPEN,
 
+	DOOR_OPEN,
 	PLAFORM_CLOSED,
+
+	PLATFORM_OPEN,
+	RAMP_CLOSED,
+
 	RAMP_OPEN,
 
-	RAMP_CLOSED,
 } state;
 
 typedef unsigned char  u8;
