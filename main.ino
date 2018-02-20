@@ -49,6 +49,15 @@ void setup()
 	pinMode(iRampClosed, INPUT);
 
 	pinMode(iButtonPin, INPUT);
+
+	pinMode(motor[0].iPinRight, OUTPUT);
+	pinMode(motor[0].iPinLeft, OUTPUT);
+
+	pinMode(motor[1].iPinRight, OUTPUT);
+	pinMode(motor[1].iPinLeft, OUTPUT);
+
+	pinMode(motor[2].iPinRight, OUTPUT);
+	pinMode(motor[2].iPinLeft, OUTPUT);
 	
 	actualState = getActualState();
 

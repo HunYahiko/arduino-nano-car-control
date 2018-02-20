@@ -1,6 +1,7 @@
 #include <typedef.h>
 
 
+// Detects the state of the car element (check typedef.h)
 state getStateOf(element e)
 {
 	bool doorOpenSensor        = (bool) !digitalRead(iDoorOpen);
@@ -109,6 +110,7 @@ void vButtonClick()
 
 
 
+// Depending on the action that should be done, selects the nextState
 void vGetNextState()
 {
 	switch(action)
@@ -125,7 +127,10 @@ void vGetNextState()
 					break;
 
 				case PLATFORM_CLOSED:
-					nextState = PLATFORM_OPEN;
+					if(actualState == nextState)
+						nextState = PLATFORM_OPEN;
+					else
+						nextState = DOOR_OPEN;
 					break;
 
 				case PLATFORM_OPEN:
@@ -133,7 +138,10 @@ void vGetNextState()
 					break;
 
 				case RAMP_CLOSED:
-					nextState = RAMP_OPEN;
+					if(actualState == nextState)
+						nextState = RAMP_OPEN;
+					else
+						nextState = PLATFORM_OPEN;
 					break;
 
 				case RAMP_OPEN:
@@ -147,7 +155,12 @@ void vGetNextState()
 
 		case PAUSE:
 			if(prevAction != PAUSE)
-				// STOP MOTORS
+				digitalWrite(motor[0].iPinRight, LOW);
+				digitalWrite(motor[0].iPinLeft, LOW);
+				digitalWrite(motor[1].iPinRight, LOW);
+				digitalWrite(motor[1].iPinLeft, LOW);
+				digitalWrite(motor[2].iPinRight, LOW);
+				digitalWrite(motor[2].iPinLeft, LOW);
 				activated = false;
 			break;
 
@@ -205,8 +218,8 @@ u32 getDistance()
 	return (duration * 0.034) / 2;
 }
 
- bool debounce(int pin, int debounceLimit, int previous) {
-
+bool debounce(int pin, int debounceLimit, int previous) {
+// daca dau 1 la previous, verific semnalul la 0
      static int debounceLimitIncrement;
      int current = digitalRead(pin);
         if(previous != current) {
