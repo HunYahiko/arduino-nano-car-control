@@ -32,7 +32,7 @@ event prevAction;
 
 bool activated = false; // indicates if any motor is working 
 
-u8 iButtonPin;
+u8 iButtonPin =;
 
 
 
@@ -62,7 +62,7 @@ void setup()
 	actualState = getActualState();
 
 	action = PAUSE;
-	prevAction = CLOSE;
+	prevAction = getPrevAction();
 	// To Do: write a function to set prevAction
 }
 

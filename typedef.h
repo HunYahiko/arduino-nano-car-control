@@ -29,7 +29,12 @@ typedef enum state
 
 } state;
 
-typedef enum 
+typedef enum event
+{
+	OPEN,
+	PAUSE,
+	CLOSE
+} event;
 
 typedef unsigned char  u8;
 typedef unsigned short u16;

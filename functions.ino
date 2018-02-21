@@ -75,6 +75,29 @@ state getActualState()
 		return DOOR_CLOSED;
 }
 
+action getPrevAction()
+{
+	switch(actualState)
+	{
+		case DOOR_CLOSED:
+			return CLOSE;
+
+		case DOOR_OPEN:
+			return OPEN;
+
+		case PLATFORM_CLOSED:
+			return CLOSE;
+
+		case PLATFORM_OPEN:
+			return OPEN;
+
+		case RAMP_CLOSED:
+			return CLOSE;
+
+		case RAMP_OPEN:
+			return OPEN;
+	}
+}
 
 
 void vButtonClick()
