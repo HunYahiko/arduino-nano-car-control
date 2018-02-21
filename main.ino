@@ -1,5 +1,7 @@
 #include "typedef.h"
 
+
+
 Motor motor[3];
 motor[0].iPinRight = 3;
 motor[0].iPinLeft  = 5;
@@ -9,6 +11,7 @@ motor[1].iPinLeft  = 9;
 
 motor[2].iPinRight = 10;
 motor[2].iPinLeft  = 11;
+
 
 
 u8 iDoorOpen   = 14;
@@ -32,8 +35,6 @@ event action;
 event prevAction;
 
 bool activated = false; // indicates if any motor is working 
-
-
 
 
 
@@ -63,7 +64,6 @@ void setup()
 
 	action = PAUSE;
 	prevAction = getPrevAction();
-	// To Do: write a function to set prevAction
 }
 
 
@@ -93,7 +93,7 @@ void loop()
 				}
 				else
 				{
-					if(debounce)<++> == LOW)
+					if(debounce(iDoorClosed, 50, 0) == true)
 					{
 						digitalWrite(motor[0].iPinLeft, LOW);
 						actualState = nextState;
@@ -113,7 +113,7 @@ void loop()
 				}
 				else
 				{
-					if(digitalRead(iDoorOpen) == LOW)
+					if(debounce(iDoorOpen, 50, 0) == true)
 					{
 						digitalWrite(motor[0].iPinRight, LOW);
 						actualState = nextState;
@@ -132,7 +132,7 @@ void loop()
 				}
 				else
 				{
-					if(digitalRead(iPlatformClosed) == LOW)
+					if(debounce(iPlatformClosed, 50, 0) == true)
 					{
 						digitalWrite(motor[1].iPinLeft, LOW);
 						actualState = nextState;
@@ -151,7 +151,7 @@ void loop()
 				}
 				else
 				{
-					if(digitalRead(iPlatformOpen) == LOW)
+					if(debounce(iPlatformOpen, 50, 0) == true)
 					{
 						digitalWrite(motor[1].iPinRight, LOW);
 						actualState = nextState;
@@ -170,7 +170,7 @@ void loop()
 				}
 				else
 				{
-					if(digitalRead(iRampOpen) == LOW)
+					if(debounce(iRampOpen, 50, 0) == true)
 					{
 						digitalWrite(motor[2].iPinRight, LOW);
 						actualState = nextState;
@@ -189,7 +189,7 @@ void loop()
 				}
 				else
 				{
-					if(digitalRead(iRampClosed) == LOW)
+					if(debounce(iRampClosed, 50, 0) == true)
 					{
 						digitalWrite(motor[2].iPinLeft, LOW);
 						actualState = nextState;
@@ -201,6 +201,6 @@ void loop()
 		}
 	}
 
-
+LOW
 	
 }

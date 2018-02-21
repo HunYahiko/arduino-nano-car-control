@@ -100,6 +100,18 @@ action getPrevAction()
 }
 
 
+void stopMotors()
+{
+	digitalWrite(motor[0].iPinRight, LOW);
+	digitalWrite(motor[0].iPinLeft, LOW);
+	digitalWrite(motor[1].iPinRight, LOW);
+	digitalWrite(motor[1].iPinLeft, LOW);
+	digitalWrite(motor[2].iPinRight, LOW);
+	digitalWrite(motor[2].iPinLeft, LOW);
+	activated = false;
+}
+
+
 void vButtonClick()
 {
 	switch(action)
@@ -107,11 +119,13 @@ void vButtonClick()
 		case CLOSE:
 			prevAction = CLOSE;
 			action = PAUSE;
+			stopMotors();
 			break;
 
 		case OPEN:
 			prevAction = OPEN;
 			action = PAUSE;
+			stopMotors();
 			break;
 
 		case PAUSE:
@@ -174,17 +188,6 @@ void vGetNextState()
 						nextState = RAMP_OPEN;
 					break;
 			}
-			break;
-
-		case PAUSE:
-			if(prevAction != PAUSE)
-				digitalWrite(motor[0].iPinRight, LOW);
-				digitalWrite(motor[0].iPinLeft, LOW);
-				digitalWrite(motor[1].iPinRight, LOW);
-				digitalWrite(motor[1].iPinLeft, LOW);
-				digitalWrite(motor[2].iPinRight, LOW);
-				digitalWrite(motor[2].iPinLeft, LOW);
-				activated = false;
 			break;
 
 		case CLOSE:
