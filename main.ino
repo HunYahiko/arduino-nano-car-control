@@ -20,13 +20,15 @@ u8 iDoorClosed = 15;
 u8 iPlatformIn  = 16;
 u8 iPlatformOut = 17;
 
-u8 iProximityTrig = 7;
-u8 iProximityEcho = 8;
-
 u8 iRampOpen   = 18;
 u8 iRampClosed = 19;
 
 u8 iButtonPin = 4;
+
+u8 iProximityTrig = 7;
+u8 iProximityEcho = 8;
+
+NewPing sonar(iProximityTrig, iProximityEcho, 20);
 
 state actualState;
 state nextState;
@@ -156,6 +158,16 @@ void loop()
 						digitalWrite(motor[1].iPinRight, LOW);
 						actualState = nextState;
 						activated = false;
+					}
+					else
+					{
+						if(sonar.ping_cm() < 20 && sonar.ping_cm() != 0)
+						{
+							digitalWrite(motor[1].iPinRight, LOW);
+							action = PAUSE;
+							prevAction = CLOSE;
+							activated = false;
+						}
 					}
 				}
 				break;

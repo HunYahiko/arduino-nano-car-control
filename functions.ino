@@ -232,19 +232,6 @@ void vGetNextState()
 
 
 
-u32 getDistance()
-{
-	digitalWrite(iProximityTrig, LOW);
-	delayMicroseconds(2);
-	digitalWrite(iProximityTrig, HIGH);
-	delayMicroseconds(10);
-	digitalWrite(iProximityTrig, LOW);
-	long duration = pulseIn(iProximityEcho, HIGH);
-
-	return (duration * 0.034) / 2;
-}
-
-
  bool debounce(int pin, int debounceLimit, int front ) {
 
      static int debounceLimitIncrement;
