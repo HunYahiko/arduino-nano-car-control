@@ -242,19 +242,22 @@ u32 getDistance()
 }
 
 
+
  bool debounce(int pin, int debounceLimit, int front ) {
 
-     static int debounceLimitIncrement;
-     int current = digitalRead(pin);
-        if(front != current) {
-            debounceLimitIncrement = 0;
-        }
+     int i,debounceLimitIncrement = 0;
+     for(int i = 0;i < debounceLimit;i++) {
+
+       int current = digitalRead(pin);
         if(front == current) {
             debounceLimitIncrement++;
         }
-        if(debounceLimitIncrement >= debounceLimit) {
-            return true;
-        } else {
-            debounce(pin,debounceLimit,front);
-        }
+         else {
+            return false;
+         }
+     }
+      if(debounceLimitIncrement >= debounceLimit) {
+        return true;
+      }
  }
+
