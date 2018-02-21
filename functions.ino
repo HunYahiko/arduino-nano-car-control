@@ -241,21 +241,20 @@ u32 getDistance()
 	return (duration * 0.034) / 2;
 }
 
-bool debounce(int pin, int debounceLimit, int previous) {
-// daca dau 1 la previous, verific semnalul la 0
+
+ bool debounce(int pin, int debounceLimit, int front ) {
+
      static int debounceLimitIncrement;
      int current = digitalRead(pin);
-        if(previous != current) {
+        if(front != current) {
             debounceLimitIncrement = 0;
-            previous = current;
         }
-        if(previous == current) {
+        if(front == current) {
             debounceLimitIncrement++;
         }
         if(debounceLimitIncrement >= debounceLimit) {
             return true;
         } else {
-            debounce(pin,debounceLimit,previous);
+            debounce(pin,debounceLimit,front);
         }
  }
-
