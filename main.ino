@@ -1,28 +1,29 @@
 #include "typedef.h"
 
 Motor motor[3];
-motor[0].iPinRight = ;
-motor[0].iPinLeft  = ;
+motor[0].iPinRight = 3;
+motor[0].iPinLeft  = 5;
 
-motor[1].iPinRight = ;
-motor[1].iPinLeft  = ;
+motor[1].iPinRight = 6;
+motor[1].iPinLeft  = 9;
 
-motor[2].iPinRight = ;
-motor[2].iPinLeft  = ;
+motor[2].iPinRight = 10;
+motor[2].iPinLeft  = 11;
 
 
-u8 iDoorOpen   = ;
-u8 iDoorClosed = ;
+u8 iDoorOpen   = 14;
+u8 iDoorClosed = 15;
 
-u8 iPlatformIn  = ;
-u8 iPlatformOut = ;
+u8 iPlatformIn  = 16;
+u8 iPlatformOut = 17;
 
-u8 iProximityTrig = ;
-u8 iProximityEcho = ;
+u8 iProximityTrig = 7;
+u8 iProximityEcho = 8;
 
-u8 iRampOpen   = ;
-u8 iRampClosed = ;
+u8 iRampOpen   = 18;
+u8 iRampClosed = 19;
 
+u8 iButtonPin = 4;
 
 state actualState;
 state nextState;
@@ -32,7 +33,6 @@ event prevAction;
 
 bool activated = false; // indicates if any motor is working 
 
-u8 iButtonPin =;
 
 
 
@@ -70,7 +70,7 @@ void setup()
 
 void loop()
 {
-	if(digitalRead(iButtonPin))
+	if(debounce(iButtonPin, 100, 1))
 	{
 		vButtonClick();
 	}
@@ -93,7 +93,7 @@ void loop()
 				}
 				else
 				{
-					if(digitalRead(iDoorClosed) == LOW)
+					if(debounce)<++> == LOW)
 					{
 						digitalWrite(motor[0].iPinLeft, LOW);
 						actualState = nextState;
