@@ -1,11 +1,11 @@
 #ifndef _TYPEDEF_H_
 #define _TYPEDEF_H_
 
-struct Motor
+typedef struct Motor
 {
 	u8 iPinRight;
 	u8 iPinLeft;
-};
+} Motor;
 
 typedef enum element
 {
@@ -20,7 +20,7 @@ typedef enum state
 	DOOR_CLOSED,
 
 	DOOR_OPEN,
-	PLAFORM_CLOSED,
+	PLATFORM_CLOSED,
 
 	PLATFORM_OPEN,
 	RAMP_CLOSED,
@@ -37,8 +37,6 @@ typedef enum event
 } event;
 
 typedef unsigned char  u8;
-typedef unsigned short u16;
-typedef unsigned int   u32;
 
 /* FUNCTION PROTOTYPES */
 
