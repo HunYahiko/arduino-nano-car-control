@@ -234,17 +234,20 @@ void vGetNextState()
 
  bool debounce(int pin, int debounceLimit, int front ) {
 
-     static int debounceLimitIncrement;
-     int current = digitalRead(pin);
-        if(front != current) {
-            debounceLimitIncrement = 0;
-        }
+     int i,debounceLimitIncrement;
+     for(int i = 0;i < debounceLimit;i++) {
+
+       int current = digitalRead(pin);
         if(front == current) {
             debounceLimitIncrement++;
         }
-        if(debounceLimitIncrement >= debounceLimit) {
-            return true;
-        } else {
-            debounce(pin,debounceLimit,front);
-        }
+         else {
+            debounceLimitIncrement = 0;
+            return false;
+         }
+     }
+      if(debounceLimitIncrement >= debounceLimit) {
+        debounceLimitIncrement = 0;
+        return true;
+      }
  }
